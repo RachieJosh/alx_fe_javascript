@@ -63,9 +63,9 @@ async function postQuoteToServer(newQuote) {
     const response = await fetch(serverUrl, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Correct spelling and capitalization of Content-Type
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newQuote), // Convert the newQuote object to JSON
+      body: JSON.stringify(newQuote),
     });
 
     const data = await response.json();
@@ -76,11 +76,13 @@ async function postQuoteToServer(newQuote) {
 }
 
 // Sync data with server periodically
-function syncData() {
+function syncQuotes() {
   fetchQuotesFromServer();
-  console.log("Syncing data with server...");
+  console.log("Syncing quotes with server...");
 }
-setInterval(syncData, 10000); // Sync every 10 seconds
+
+// Call syncQuotes periodically
+setInterval(syncQuotes, 10000); // Sync every 10 seconds
 
 // Resolve conflicts by giving server data precedence
 function resolveConflicts(serverQuotes) {
