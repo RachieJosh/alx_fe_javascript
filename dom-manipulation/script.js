@@ -43,9 +43,39 @@ function addQuote() {
     document.getElementById(
       "quoteDisplay"
     ).innerHTML = `<p>${newQuoteText}</p>`;
+
+    // Clear input fields
+    document.getElementById("newQuoteText").value = "";
+    document.getElementById("newQuoteCategory").value = "";
   } else {
     alert("Please enter both a quote and a category.");
   }
+}
+
+// Create the form for adding new quotes
+function createAddQuoteForm() {
+  const formContainer = document.createElement("div");
+
+  const quoteInput = document.createElement("input");
+  quoteInput.id = "newQuoteText";
+  quoteInput.type = "text";
+  quoteInput.placeholder = "Enter a new quote";
+
+  const categoryInput = document.createElement("input");
+  categoryInput.id = "newQuoteCategory";
+  categoryInput.type = "text";
+  categoryInput.placeholder = "Enter quote category";
+
+  const addButton = document.createElement("button");
+  addButton.innerText = "Add Quote";
+  addButton.onclick = addQuote; // Attach the addQuote function
+
+  formContainer.appendChild(quoteInput);
+  formContainer.appendChild(categoryInput);
+  formContainer.appendChild(addButton);
+
+  // Append the form to the body or a specific container
+  document.body.appendChild(formContainer);
 }
 
 // Fetch quotes from server
@@ -99,6 +129,7 @@ function resolveConflicts(serverQuotes) {
 
 // DOM loaded
 document.addEventListener("DOMContentLoaded", () => {
+  createAddQuoteForm(); // Create the form for adding quotes
   showRandomQuote();
   document
     .getElementById("newQuote")
