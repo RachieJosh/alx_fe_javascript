@@ -77,8 +77,9 @@ async function postQuoteToServer(newQuote) {
 
 // Sync data with server periodically
 function syncQuotes() {
-  fetchQuotesFromServer();
-  console.log("Syncing quotes with server...");
+  fetchQuotesFromServer().then(() => {
+    console.log("Quotes synced with server!");
+  });
 }
 
 // Call syncQuotes periodically
@@ -88,6 +89,7 @@ setInterval(syncQuotes, 10000); // Sync every 10 seconds
 function resolveConflicts(serverQuotes) {
   const combinedQuotes = [...serverQuotes];
   localStorage.setItem("quotes", JSON.stringify(combinedQuotes));
+  console.log("Quotes synced with server!");
   alert("Data synced with the server. Conflicts have been resolved.");
 }
 
