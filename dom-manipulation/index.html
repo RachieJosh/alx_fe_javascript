@@ -4,45 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamic Quote Generator</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-      }
-      #quoteDisplay {
-        font-size: 24px;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      input {
-        padding: 10px;
-        margin: 5px;
-        width: 250px;
-      }
-      button {
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #0056b3;
-      }
-    </style>
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
-    <div id="quoteDisplay">Click "Show New Quote" for a quote!</div>
+
+    <!-- Quote Display Section -->
+    <div id="quoteDisplay"></div>
     <button id="newQuote">Show New Quote</button>
 
+    <!-- Category Filter Dropdown -->
+    <div>
+      <label for="categoryFilter">Filter by Category: </label>
+      <select id="categoryFilter" onchange="filterQuotesByCategory()">
+        <option value="all">All Categories</option>
+      </select>
+    </div>
+
+    <!-- Add New Quote Section -->
     <div>
       <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
       <input
