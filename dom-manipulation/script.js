@@ -20,8 +20,10 @@ function saveQuotesToLocalStorage() {
 // Display a random quote
 function showRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
-  document.getElementById("quoteDisplay").textContent =
-    quotes[randomIndex].text;
+  const quoteDisplay = document.getElementById("quoteDisplay");
+
+  // Use innerHTML to display the quote text dynamically
+  quoteDisplay.innerHTML = `<p>${quotes[randomIndex].text}</p>`;
 }
 
 // Add a new quote
@@ -37,8 +39,10 @@ function addQuote() {
     saveQuotesToLocalStorage();
     postQuoteToServer(newQuote);
 
-    // Show the new quote
-    document.getElementById("quoteDisplay").textContent = newQuoteText;
+    // Use innerHTML to show the new quote
+    document.getElementById(
+      "quoteDisplay"
+    ).innerHTML = `<p>${newQuoteText}</p>`;
   } else {
     alert("Please enter both a quote and a category.");
   }
