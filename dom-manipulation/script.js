@@ -127,6 +127,24 @@ function resolveConflicts(serverQuotes) {
   alert("Data synced with the server. Conflicts have been resolved.");
 }
 
+// Function to export quotes as a JSON file
+function exportQuotes() {
+  const quotesJson = JSON.stringify(quotes, null, 2);
+  const blob = new Blob([quotesJson], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "quotes.json";
+  a.click();
+  URL.revokeObjectURL(url); // Clean up the URL object
+}
+
+// Add event listener to the export button
+document
+  .getElementById("exportQuotesButton")
+  .addEventListener("click", exportQuotes);
+
 // DOM loaded
 document.addEventListener("DOMContentLoaded", () => {
   createAddQuoteForm(); // Create the form for adding quotes

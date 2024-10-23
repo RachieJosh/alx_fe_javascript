@@ -7,20 +7,10 @@
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
-
-    <!-- Quote Display Section -->
     <div id="quoteDisplay"></div>
     <button id="newQuote">Show New Quote</button>
 
-    <!-- Category Filter Dropdown -->
-    <div>
-      <label for="categoryFilter">Filter by Category: </label>
-      <select id="categoryFilter" onchange="filterQuotesByCategory()">
-        <option value="all">All Categories</option>
-      </select>
-    </div>
-
-    <!-- Add New Quote Section -->
+    <!-- Add input fields and add quote button -->
     <div>
       <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
       <input
@@ -30,6 +20,9 @@
       />
       <button onclick="addQuote()">Add Quote</button>
     </div>
+
+    <!-- Export Quotes Button -->
+    <button id="exportQuotesButton">Export Quotes</button>
 
     <script src="script.js"></script>
   </body>
