@@ -24,6 +24,16 @@
     <!-- Export Quotes Button -->
     <button id="exportQuotesButton">Export Quotes</button>
 
+    <!-- Import Quotes Button -->
+    <div>
+      <input
+        type="file"
+        id="importFile"
+        accept=".json"
+        onchange="importFromJsonFile(event)"
+      />
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

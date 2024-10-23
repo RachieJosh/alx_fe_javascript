@@ -145,6 +145,19 @@ document
   .getElementById("exportQuotesButton")
   .addEventListener("click", exportQuotes);
 
+// Function to import quotes from a JSON file
+function importFromJsonFile(event) {
+  const fileReader = new FileReader();
+  fileReader.onload = function (event) {
+    const importedQuotes = JSON.parse(event.target.result);
+    quotes.push(...importedQuotes);
+    saveQuotesToLocalStorage(); // Save the imported quotes to localStorage
+    alert("Quotes imported successfully!");
+    showRandomQuote(); // Show a random quote after importing
+  };
+  fileReader.readAsText(event.target.files[0]);
+}
+
 // DOM loaded
 document.addEventListener("DOMContentLoaded", () => {
   createAddQuoteForm(); // Create the form for adding quotes
