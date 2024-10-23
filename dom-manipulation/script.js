@@ -1,5 +1,5 @@
-// Quotes Array (Initial Set)
-const quotes = [
+// Check if quotes are stored in localStorage; if not, use the default quotes
+let quotes = JSON.parse(localStorage.getItem("quotes")) || [
   {
     text: "The only limit to our realization of tomorrow is our doubts of today.",
     category: "inspiration",
@@ -13,6 +13,11 @@ const quotes = [
     category: "motivation",
   },
 ];
+
+// Function to save quotes to localStorage
+function saveQuotesToLocalStorage() {
+  localStorage.setItem("quotes", JSON.stringify(quotes));
+}
 
 // Function to display a random quote
 function showRandomQuote() {
@@ -64,6 +69,9 @@ function addQuote() {
     // Clear input fields
     document.getElementById("newQuoteText").value = "";
     document.getElementById("newQuoteCategory").value = "";
+
+    // Save the updated quotes array to localStorage
+    saveQuotesToLocalStorage();
 
     // Repopulate categories dropdown in case new category was added
     populateCategories();
